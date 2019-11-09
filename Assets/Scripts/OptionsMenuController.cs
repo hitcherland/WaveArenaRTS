@@ -8,6 +8,7 @@ public class OptionsMenuController : MonoBehaviour
 
     private Canvas canvas;
     private GameObject confirmQuit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class OptionsMenuController : MonoBehaviour
         canvas.enabled = false;
         confirmQuit = transform.Find("Confirm Quit").gameObject;
         confirmQuit.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -43,5 +45,17 @@ public class OptionsMenuController : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void ToggleGrayscale()
+    {
+        int grayscale = PlayerPrefs.GetInt("use_grayscale", 0);
+        if(grayscale == 0)
+        {
+            PlayerPrefs.SetInt("use_grayscale", 1);
+        } else
+        {
+            PlayerPrefs.SetInt("use_grayscale", 0);
+        }
     }
 }
